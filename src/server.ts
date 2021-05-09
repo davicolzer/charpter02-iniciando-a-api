@@ -14,8 +14,12 @@ app.use(router);
 
 app.listen(3333, () =>
     console.log(`
+
     Server is running
+
     API: http://localhost:3333
+
     Documentation: http://localhost:3333/api-docs
+
 `)
 );

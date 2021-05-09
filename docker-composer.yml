@@ -1,0 +1,10 @@
+version: "3.7"  # Versão do composer
+
+services: 
+    app:
+        build: .  # informar o local que a aplicação irá rodar
+        container_name: rentx  # nome do container
+        ports: 
+            - 3333:3333  # Porta que sera ouvida no computador e porta que será recebida no container
+        volumes:
+            - .:/usr/app  # local da da aplicação criada
