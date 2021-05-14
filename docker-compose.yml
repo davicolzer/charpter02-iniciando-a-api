@@ -1,6 +1,19 @@
 version: "3.7"  # Versão do composer
 
-services: 
+services:
+    database_ignite:
+        image: postgres
+        container_name: database_ignite
+        restart: always
+        ports:
+            - 5432:5432
+        environment: 
+            - POSTGRES_USER=docker
+            - POSTGRES_PASSWORD=ignite
+            - POSTGRES_DB=rentx
+        volumes:
+            - pgdata:/data/postgres
+        
     app:
         build: .  # informar o local que a aplicação irá rodar
         container_name: rentx  # nome do container
@@ -8,3 +21,11 @@ services:
             - 3333:3333  # Porta que sera ouvida no computador e porta que será recebida no container
         volumes:
             - .:/usr/app  # local da da aplicação criada
+        links:
+            - database_ignite
+        depends_on: 
+            - database_ignite
+
+volumes:
+    pgdata:
+        driver: local
