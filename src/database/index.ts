@@ -13,4 +13,5 @@ getConnectionOptions().then((options) => {
         ...options,
     });
 });
+
 // Termino do código para container-app conectar no container-db
