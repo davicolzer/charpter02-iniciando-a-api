@@ -1,7 +1,7 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import { pathsToModuleNameMapper } from "ts-jest/utils";
 
-import { compilerOptions } from "./tsconfig.json";
+// import { compilerOptions } from "./tsconfig.json";
 
 export default {
     bail: true,
@@ -10,9 +10,18 @@ export default {
 
     coverageProvider: "v8",
 
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: "<rootDir>/src/",
-    }),
+    moduleNameMapper: pathsToModuleNameMapper(
+        {
+            "@modules/*": ["modules/*"],
+            "@config/*": ["config/*"],
+            "@shared/*": ["shared/*"],
+            "@errors/*": ["errors/*"],
+            "@utils/*": ["utils/*"],
+        },
+        {
+            prefix: "<rootDir>/src/",
+        }
+    ),
 
     preset: "ts-jest",
 
