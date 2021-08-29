@@ -25,7 +25,7 @@ class CarsRepository implements ICarsRepository {
             brand,
             category_id,
             daily_rate,
-            description, 
+            description,
             fine_amount,
             license_plate,
             name,
